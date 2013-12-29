@@ -12,21 +12,21 @@ function echo_usage {
 echo -e "   slimpi v0.1!\n   ============"
 
 echo -e "\n > updating apt..."
-apt-get -qq update
+apt-get -qq update 1>/dev/null 2>&1
 
 echo_usage "before removal"
 echo " > removing the following packages and their met reverse dependencies: ${PKG_DEL}"
-apt-get -qq remove --purge ${PKG_DEL}
-apt-get -qq autoremove --purge
+apt-get -qq remove --purge ${PKG_DEL} 1>/dev/null 2>&1
+apt-get -qq autoremove --purge 1>/dev/null 2>&1
 
 echo_usage "after removal, before upgrade"
 echo " > upgrading system"
-apt-get -qq dist-upgrade
-apt-get -qq autoremove --purge
+apt-get -qq dist-upgrade 1>/dev/null 2>&1
+apt-get -qq autoremove --purge 1>/dev/null 2>&1
 
 echo_usage "after upgrading, before installation"
 echo " > installing the following packages including their dependencies: ${PKG_ADD}"
-apt-get -qq install ${PKG_ADD}
+apt-get -qq install ${PKG_ADD} 1>/dev/null 2>&1
 
 echo_usage "after installation"
 
