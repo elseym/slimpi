@@ -37,3 +37,4 @@ rm ${TEMPFILE}
 
 echo -e "\n > all done. press any key to reboot..."
 read
+reboot
